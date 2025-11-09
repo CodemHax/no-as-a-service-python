@@ -62,12 +62,13 @@ pip install -r requirements.txt
 
 ### 3. Run the server
 ```bash
-python index.py
+python -m uvicorn api.index:app --host 0.0.0.0 --port 8000
 ```
 
-Or using uvicorn directly:
+Or from the api directory:
 ```bash
-uvicorn index:app --host 0.0.0.0 --port 8000
+cd api
+python index.py
 ```
 
 The API will be live at:
@@ -83,6 +84,20 @@ docker build -t no-as-a-service .
 docker run -p 8000:8000 no-as-a-service
 ```
 
+### ▲ Vercel Deployment
+
+Deploy to Vercel with one click:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/CodemHax/no-as-a-service-python)
+
+Or using Vercel CLI:
+```bash
+npm i -g vercel
+vercel
+```
+
+The project includes a `vercel.json` configuration file for automatic deployment.
+
 ---
 
 ## 📁 Project Structure
@@ -92,8 +107,9 @@ docker run -p 8000:8000 no-as-a-service
     ├── README.md
     ├── requirements.txt    # Python dependencies
     ├── Dockerfile          # Docker configuration
-    ├── index.py           # FastAPI application
     ├── reasons.json       # 1000+ universal rejection reasons
+    ├── api/
+    │   └── index.py       # FastAPI application
     └── assets/
         └── imgs/          # Banner images
 ```
