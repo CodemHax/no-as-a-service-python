@@ -43,8 +43,10 @@ async def load_data():
 
 
 @app.get("/favicon.ico", include_in_schema=False)
+@limiter.limit("120/minute")
 async def favicon():
     return FileResponse(favicon_path)
+    
 @app.get("/no")
 @limiter.limit("120/minute")
 async def root(request: Request):
