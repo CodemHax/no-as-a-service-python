@@ -42,14 +42,19 @@ async def load_data():
 
 
 
+@app.get("/")
+async def home():
+    return JSONResponse(content={"message": "No as a Service API", "endpoint": "/no"}, status_code=200)
+
+
 @app.get("/favicon.ico", include_in_schema=False)
-@limiter.limit("120/minute")
 async def favicon():
     return FileResponse(favicon_path)
-    
+
+
 @app.get("/no")
 @limiter.limit("120/minute")
-async def root(request: Request):
+async def get_no(request: Request):
     data = await load_data()
     if data:
         choose = random.choice(data)
