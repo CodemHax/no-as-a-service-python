@@ -23,7 +23,7 @@ Built for humans, excuses, and humor.
 
 **Base URL**
 ```
-https://no-as-a-service-python.vercel.app/no
+https://nass.archax.site/no
 ```
 
 **Method:** `GET`  
